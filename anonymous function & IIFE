@@ -153,6 +153,163 @@ Ans:
 
 //anonymous function :
 
+function isPalindrome(word) {
+  const firstHalf = word.slice(0, Math.ceil(word.length / 2));
+  const secondHalfReversed = word
+    .slice(Math.floor(word.length / 2))
+    .split("")
+    .reverse()
+    .join("");
+
+  return firstHalf === secondHalfReversed;
+}
+
+function getPalindromesFromArray(arr) {
+  return arr.filter(isPalindrome);
+}
+
+const wordsArr = ['121', 'aaaa', 'civic', 'liril', '1256521', 'sharme'];
+
+console.log(getPalindromesFromArray(wordsArr));
+
+Output:
+(5) ['121', 'aaaa', 'civic', 'liril', '1256521']
+
+
+//IIFE
+
+let a = (function (arr) {
+  let palindromes = arr.filter((w) => {
+    let len = w.length;
+    for (let i = 0; i < len / 2; i++) {
+      if (w[i] == w[len - i - 1]) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  });
+  console.log(palindromes);
+})(['121', 'aaaa', 'civic', 'liril', '1256521', 'sharme']);
+
+Output:
+(5) ['121', 'aaaa', 'civic', 'liril', '1256521']
+
+
+//f. Return median of two sorted arrays of the same size
+
+Ans:
+
+//anonymous function :
+
+function median(a, b) {
+  let c = [...a, ...b].sort((a, b) => a - b);
+
+  const half = (c.length / 2) | 0;
+
+  if (c.length % 2) return c[half];
+
+  return (c[half] + c[half - 1]) / 2;
+}
+const arr1 = [1, 18, 13, 27, 38];
+
+const arr2 = [2, 13, 17, 30, 45, 47];
+
+console.log(median(arr1, arr2));
+
+Output:
+18
+
+//IIFE
+
+let median = function (a, b) {
+  let c = [...a, ...b].sort((a, b) => a - b);
+
+  const half = (c.length / 2) | 0;
+
+  if (c.length % 2) return c[half];
+
+  return (c[half] + c[half - 1]) / 2;
+};
+console.log(median([1, 18, 13, 27, 38], [2, 13, 17, 30, 45, 47]));
+
+Output:
+18
+
+//g) Remove duplicates from an array
+
+Ans:
+
+//anonymous function :
+
+var arr = [1, 2, 3, 3, 4, 5,2, 6,3,6,1,"apple", "orange", "mango", "mango"];
+  
+    function removeDuplicates(arr) {
+        var unique = [];
+        arr.forEach(element => {
+            if (!unique.includes(element)) {
+                unique.push(element);
+            }
+        });
+        return unique;
+    }
+  
+    console.log(removeDuplicates(arr));
+    
+  Output:
+  
+  (9) [1, 2, 3, 4, 5, 6, 'apple', 'orange', 'mango']
+  
+  //IIFE
+  
+  var removeDuplicates = function(arr) {
+        var unique = [];
+        arr.forEach(element => {
+            if (!unique.includes(element)) {
+                unique.push(element);
+            }
+        });
+        return unique;
+    }
+  
+    console.log(removeDuplicates([1, 2, 3, 3, 4, 5,2, 6,3,6,1,"apple", "orange", "mango", "mango"]));
+    
+  Output:
+  
+  (9) [1, 2, 3, 4, 5, 6, 'apple', 'orange', 'mango']
+  
+  //h) Rotate an array by k times
+  
+Ans:
+
+//anonymous function :
+
+var arr=[1,2,3,4,5];
+k=2;
+var rotateArray = function(arr,k){
+  for(let i=0;i<k;i++){
+  arr.push(arr.shift());
+  }
+  return arr;
+  }
+  console.log(rotateArray(arr,k))
+  
+  Output:
+  (5) [3, 4, 5, 1, 2]
+  
+  //IIFE
+  
+  (function(arr,k){
+  for(let i=0;i<k;i++){
+    arr.push(arr.shift());
+  }
+  console.log(arr,k);
+})([1,2,3,4,5],[2]);
+
+Output: 
+
+(5) [3, 4, 5, 1, 2] [2]
+
 
 
 
